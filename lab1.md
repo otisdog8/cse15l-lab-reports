@@ -13,7 +13,7 @@ Then, I would install vscode by running the following command
 yay -S visual-studio-code-bin
 ```
 Now, I can open vscode:
-![](https://media.discordapp.net/attachments/527258492286009344/1063217775436365864/image.png?width=1515&height=852)
+![](https://media.discordapp.net/attachments/527258492286009344/1063217775436365864/image.png)
 ## Step 2: Remotely Connecting
 
 ## Step 3: Trying Some Commands

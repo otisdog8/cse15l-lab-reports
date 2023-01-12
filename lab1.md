@@ -44,3 +44,25 @@ Now, I'm in, and the prompt looks like this:
 ![](https://media.discordapp.net/attachments/527258492286009344/1063238187301994506/image.png)  
 
 ## Step 3: Trying Some Commands
+Time to try running some commands:  
+
+First I ran the `touch test` command, to create a file named test:  
+
+![](https://media.discordapp.net/attachments/527258492286009344/1063241953782812742/image.png)  
+
+Then, I ran the `ls` command to list all the files in my home directory:  
+
+![](https://media.discordapp.net/attachments/527258492286009344/1063241954114150410/image.png)  
+
+Looks like test appeared.
+
+I'm a bit curious about how ieng6 works, because I noticed it's actually multiple computers in a suit (ieng6-201, ieng6-202, ieng6-203), so I'm running the `df -h` command:  
+
+![](https://media.discordapp.net/attachments/527258492286009344/1063241954890108958/image.png)  
+
+Looks like they make it work by using a network file system.
+Now, let's take a look at the message the course staff left for us, by catting a certain file `cat /home/linux/ieng6/cs15lwi23/public/hello.txt`:  
+
+![](https://media.discordapp.net/attachments/527258492286009344/1063241955280166912/image.png)  
+
+The end.

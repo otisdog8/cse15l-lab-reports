@@ -55,6 +55,7 @@ class StringServer {
 }
 ```
 
+Do note that this current code is inefficient as adding to a string can involve substantial copying. In this case, it might make more sense to use a StringBuilder.
 
 Screenshot 1:
 
@@ -73,7 +74,7 @@ In this screenshot, the handleRequest method is called, with a URI that refers t
 
 Failure-inducing input:
 ```java
-    @Test
+    @Test(timeout = 500)
     public void testAppendFail() {
         LinkedList ll = new LinkedList();
         ll.append(5);
@@ -129,7 +130,6 @@ After:
             this.root = new Node(value, null);
             return;
         }
-        // If it's just one element, add if after that one
         Node n = this.root;
 
         while(n.next != null) {
@@ -137,8 +137,6 @@ After:
         }
 
         n.next = new Node(value, null);
-        // Otherwise, loop until the end and add at the end with a null
-
     }
 ```
 

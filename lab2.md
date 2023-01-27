@@ -71,6 +71,81 @@ In this screenshot, the handleRequest method is called, with a URI that refers t
 
 ## Part 2
 
+Failure-inducing input:
+```java
+    @Test
+    public void testAppendFail() {
+        LinkedList ll = new LinkedList();
+        ll.append(5);
+        ll.append(6);
+        ll.append(7);
+        assertEquals("5 6 7 ", ll.toString());
+    }
+ ```
+ 
+Non failure-inducing output:
+```java
+    @Test
+    public void testAppendPass() {
+        LinkedList ll = new LinkedList();
+        ll.append(5);
+        assertEquals("5 ", ll.toString());
+    }
+```
+
+Symptom:
+
+![image](https://user-images.githubusercontent.com/37094599/214989027-dfc54f42-9980-4946-a000-57f6146124db.png)
+
+Bug:
+
+Before:
+
+```java
+    public void append(int value) {
+        if(this.root == null) {
+            this.root = new Node(value, null);
+            return;
+        }
+        // If it's just one element, add if after that one
+        Node n = this.root;
+        if(n.next == null) {
+            n.next = new Node(value, null);
+            return;
+        }
+        // Otherwise, loop until the end and add at the end with a null
+        while(n.next != null) {
+            n = n.next;
+            n.next = new Node(value, null);
+        }
+    }
+```
+
+After:
+
+```java
+    public void append(int value) {
+        if(this.root == null) {
+            this.root = new Node(value, null);
+            return;
+        }
+        // If it's just one element, add if after that one
+        Node n = this.root;
+
+        while(n.next != null) {
+            n = n.next;
+        }
+
+        n.next = new Node(value, null);
+        // Otherwise, loop until the end and add at the end with a null
+
+    }
+```
+
+The fix addresses the issue because the old code effectively creates an infinite loop, because it ensures that n.next is never null. Because we know this linked list can never contain a cycle, our while loop will eventually reach the end of the linked list (n.next == null). Once we've reached the last node of the linked list, we set its next node to be the node we just added (effectively appending). This is correct behavior.
+
 ## Part 3
+
+In lab weeks 2 and 3, I learned how to use junit outside of the context of an IDE (i.e only using javac -cp and java -cp). Prior to this, I mostly used the IDE integration with intellij to run java/junit, but was unaware of the underlying mechanism via which java included other libraries. This could be useful in the future if I ever use Java in industry. One thing I wonder about is how java handles dependencies with libraries, specifically if a junit dependency is not included while junit is.
 
 The end.

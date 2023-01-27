@@ -3,10 +3,11 @@
 ## Part 1
 Code for my StringServer
 ```java
+import java.io.IOException;
 import java.net.URI;
 
 class StringHandler implements URLHandler {
-    StringBuilder sb = new StringBuilder();
+    String st = "";
 
     public String handleRequest(URI url) {
         if (url == null) {
@@ -30,9 +31,8 @@ class StringHandler implements URLHandler {
             return "Invalid querystring";
         }
         if (url.getPath().endsWith("/add-message")) {
-            sb.append(s);
-            sb.append('\n');
-            return sb.toString();
+            st = st + s + "\n";
+            return st;
 
         }
         else {
@@ -54,11 +54,20 @@ class StringServer {
     }
 }
 ```
-Here, i chose not to use 
+
+
 Screenshot 1:
+
 ![image](https://user-images.githubusercontent.com/37094599/214975115-e1a548e9-bd7f-49f8-9704-3e5aa11f763a.png)
+
+In this screenshot, the handleRequest method is called, with a URI that refers to the URL "localhost:1521/add-message?s=how%20are%20y0u". Then, my code verifies that the s= parameter exists and is valid. Finally, it changes the st string from "hi\nhi\nhello\n" to "hi\nhi\nhello\nhow are you\n"
+
 Screenshot 2:
+
 ![image](https://user-images.githubusercontent.com/37094599/214975448-6f6dca4a-1c8c-449c-a4c5-c39dd6d273a3.png)
+
+In this screenshot, the handleRequest method is called, with a URI that refers to the URL "localhost:1521/add-message?s=1234567890". Then, my code verifies that the s= parameter exists and is valid. Because URLs are really strings, we don't need to convert the number to a string. Finally, it changes the st string from "hi\nhi\nhello\nhow are you\n" to "hi\nhi\nhello\nhow are you\n1234567890\n"
+
 
 ## Part 2
 

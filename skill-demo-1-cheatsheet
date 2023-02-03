@@ -1,0 +1,7 @@
+# Stuff
+
+## wc better sort snippet
+```bash
+wc -c $FILES | sed -E 's/ [^w]/0/g' | sort
+```
+

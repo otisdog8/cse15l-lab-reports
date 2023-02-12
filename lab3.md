@@ -23,7 +23,7 @@ written_2/travel_guides/berlitz2/Bahamas-History.txt:The Spaniards never bothere
 
 ### Example 2
 
-Maybe I want to travel around the Bahamas, so I want to find all the files in travel_guides folder which mention gold in association with the bahamas:
+Maybe I want to travel around the Bahamas, and I'm interested in gold, so I want to find all the files in travel_guides folder which mention gold in association with the Bahamas (do note that i use shell globbing here):
 
 Command:
 ```bash
@@ -63,7 +63,16 @@ written_2/travel_guides/berlitz2/Bahamas-WhereToGo.txt:12:gold
 
 ### Example 2
 
-Count occurences of word in written_2
+But, you can use it for other fun things, like counting the number of occurences of a word in a file (or in our case, in all the files in written_2). grep -r "word" | wc -l doesn't work here because words might occur multiple times in a line; grep -o fixes that. Continuing the gold theme:
+
+Command:
+```bash
+grep -r "gold" -o -n | wc -l
+```
+Output:
+```
+391
+```
 
 ## Option 2
 

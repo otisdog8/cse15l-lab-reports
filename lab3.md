@@ -63,7 +63,7 @@ written_2/travel_guides/berlitz2/Bahamas-WhereToGo.txt:12:gold
 
 ### Example 2
 
-But, you can use it for other fun things, like counting the number of occurences of a word in a file (or in our case, in all the files in written_2). grep -r "word" | wc -l doesn't work here because words might occur multiple times in a line; grep -o fixes that. Continuing the gold theme:
+But, you can use it for other fun things, like counting the number of occurences of a word in a file (or in our case, in all the files in written_2). `grep -r "word" | wc -l` doesn't work here because words might occur multiple times in a line; `grep -o` fixes that. Continuing the gold theme:
 
 Command:
 ```bash
@@ -76,7 +76,7 @@ Output:
 
 ## Option 2
 
-For option 2, I chose to use the --color=auto option which makes the grep inputs more colorful. I like this because in my terminal (unlike vscode or git bash), grep is not colored by default. I found this option on the manpage. Do note that for all the examples for this option, I'm going to ignore the instructions and use photos as the output instead of code blocks, as the code blocks do not render color properly. 
+For option 2, I chose to use the `--color=auto` option which makes the grep inputs more colorful. I like this because in my terminal (unlike vscode or git bash), grep is not colored by default. I found this option on the manpage. Do note that for all the examples for this option, I'm going to ignore the instructions and use photos as the output instead of code blocks, as the code blocks do not render color properly. 
 
 ### Example 1
 
@@ -86,7 +86,9 @@ Command:
 ```bash
 grep -r "Lucayans" --color=auto
 ```
+
 Output (after and before):
+
 ![image](https://user-images.githubusercontent.com/37094599/218294574-5fea4895-45cb-4004-aea0-87f8b44cfc8d.png)
 
 ### Example 2
@@ -95,9 +97,10 @@ I wonder what it does when you shorten the output, so let's run that:
 
 Command:
 ```bash
-grep -r "gold" written_2/travel_guides/*/*Bahamas* -o -n
+grep -r "gold" written_2/travel_guides/*/*Bahamas* -o -n --color=auto
 ```
 Output (before and after):
+
 ![image](https://user-images.githubusercontent.com/37094599/218294823-1b047ae2-6066-4fe1-bbdd-e58277cbb21e.png)
 
 In the future, I've added `alias grep=grep --color=auto` to my ~/.zshrc so it does this by default.
@@ -108,12 +111,46 @@ For option 1, I chose to use the -E option which has grep do matches using exten
 
 ### Example 1
 
-Continuing the natural resources theme, maybe I want to 
+Although my search for Bahamas gold appears to have been going well, I've made an error, which is not searching for "Gold" (capital g), instead limiting my search for lowercase. I also want to search for silver. So, now that I'm using extended regex, I can do so:
+
+Command:
+```bash
+grep -E -r "([gG]old|[sS]ilver)" written_2/travel_guides/*/*Bahamas* -o -n --color=auto
+```
+Output:
+```
+written_2/travel_guides/berlitz2/Bahamas-History.txt:6:gold
+written_2/travel_guides/berlitz2/Bahamas-History.txt:7:gold
+written_2/travel_guides/berlitz2/Bahamas-History.txt:7:gold
+written_2/travel_guides/berlitz2/Bahamas-WhatToDo.txt:14:gold
+written_2/travel_guides/berlitz2/Bahamas-WhatToDo.txt:14:silver
+written_2/travel_guides/berlitz2/Bahamas-WhatToDo.txt:14:gold
+written_2/travel_guides/berlitz2/Bahamas-WhatToDo.txt:14:Gold
+written_2/travel_guides/berlitz2/Bahamas-WhatToDo.txt:14:gold
+written_2/travel_guides/berlitz2/Bahamas-WhatToDo.txt:14:silver
+written_2/travel_guides/berlitz2/Bahamas-WhatToDo.txt:14:gold
+written_2/travel_guides/berlitz2/Bahamas-WhatToDo.txt:21:Gold
+written_2/travel_guides/berlitz2/Bahamas-WhereToGo.txt:12:gold
+written_2/travel_guides/berlitz2/Bahamas-WhereToGo.txt:34:Silver
+written_2/travel_guides/berlitz2/Bahamas-WhereToGo.txt:57:Gold
+written_2/travel_guides/berlitz2/Bahamas-WhereToGo.txt:57:Gold
+written_2/travel_guides/berlitz2/Bahamas-WhereToGo.txt:74:Gold
+written_2/travel_guides/berlitz2/Bahamas-WhereToGo.txt:108:silver
+```
+
+The way the regex works is it matches either `[gG]old` or `[sS]ilver`, and the brackets just mean that it matches either g or G (likewise for `[sS]`. 
 
 ### Example 2
 
-Count number of sentences in the repository
+I'm interested in the total number of sentences contained in written_2. So, I've designed the following regex to find a sentence: `[A-Z][^.]+\.`. `[A-Z]` matches a capital letter, `[^.]+` matches one or more non period characters, and `\.` matches a period (. is a wildcard in regex). Do note that I've used the --exclude-dir=.git argument just to ensure that grep doesn't search the .git folder for sentences,
 
+Command:
+```bash
+grep -E -r --exclude-dir=.git "[A-Z][^.]+\." -o -n --color=auto | wc -l
+```
+Output:
+```
+49319
+```
 
-
-The end.
+So, it appears that there are 49319 sentences in the repository. 

@@ -8,13 +8,66 @@ For option 0, I chose to use the -r option (or -d recurse) which lets grep recur
 
 ### Example 1
 
-Find lucayans
+In this first example, we'll replicate the skill demo task of searching for the string "Lucayans" in the folder written_2.
+
+Command:
+```bash
+grep -r "Lucayans"
+```
+Output:
+```
+written_2/travel_guides/berlitz2/Bahamas-History.txt:Centuries before the arrival of Columbus, a peaceful Amerindian people who called themselves the Luccucairi had settled in the Bahamas. Originally from South America, they had traveled up through the Caribbean islands, surviving by cultivating modest crops and from what they caught from sea and shore. Nothing in the experience of these gentle people could have prepared them for the arrival of the Pinta, the Niña, and the Santa Maria at San Salvador on 12 October 1492. Columbus believed that he had reached the East Indies and mistakenly called these people Indians. We know them today as the Lucayans. Columbus claimed the island and others in the Bahamas for his royal Spanish patrons, but not finding the gold and other riches he was seeking, he stayed for only two weeks before sailing towards Cuba.
+written_2/travel_guides/berlitz2/Bahamas-History.txt:The Spaniards never bothered to settle in the Bahamas, but the number of shipwrecks attest that their galleons frequently passed through the archipelago en route to and from the Caribbean, Florida, Bermuda, and their home ports. On Eleuthera the explorers dug a fresh-water well — at a spot now known as “Spanish Wells” — which was used to replenish the supplies of water on their ships before they began the long journey back to Europe with their cargoes of South American gold. As for the Lucayans, within 25 years all of them, perhaps some 30,000 people, were removed from the Bahamas to work — and die — in Spanish gold mines and on farms and pearl fisheries on Hispaniola (Haiti), Cuba, and elsewhere in the Caribbean.
+```
+
 
 ### Example 2
 
+Maybe I want to travel around the Bahamas, so I want to find all the files in travel_guides folder which mention gold in association with the bahamas:
+
+Command:
+```bash
+grep -r "gold" written_2/travel_guides/*/*Bahamas*
+```
+Output:
+```
+written_2/travel_guides/berlitz2/Bahamas-History.txt:Centuries before the arrival of Columbus, a peaceful Amerindian people who called themselves the Luccucairi had settled in the Bahamas. Originally from South America, they had traveled up through the Caribbean islands, surviving by cultivating modest crops and from what they caught from sea and shore. Nothing in the experience of these gentle people could have prepared them for the arrival of the Pinta, the Niña, and the Santa Maria at San Salvador on 12 October 1492. Columbus believed that he had reached the East Indies and mistakenly called these people Indians. We know them today as the Lucayans. Columbus claimed the island and others in the Bahamas for his royal Spanish patrons, but not finding the gold and other riches he was seeking, he stayed for only two weeks before sailing towards Cuba.
+written_2/travel_guides/berlitz2/Bahamas-History.txt:The Spaniards never bothered to settle in the Bahamas, but the number of shipwrecks attest that their galleons frequently passed through the archipelago en route to and from the Caribbean, Florida, Bermuda, and their home ports. On Eleuthera the explorers dug a fresh-water well — at a spot now known as “Spanish Wells” — which was used to replenish the supplies of water on their ships before they began the long journey back to Europe with their cargoes of South American gold. As for the Lucayans, within 25 years all of them, perhaps some 30,000 people, were removed from the Bahamas to work — and die — in Spanish gold mines and on farms and pearl fisheries on Hispaniola (Haiti), Cuba, and elsewhere in the Caribbean.
+written_2/travel_guides/berlitz2/Bahamas-WhatToDo.txt:Duty-free luxury goods. Both New Providence and Grand Bahama have a good range of luxury duty-free goods for sale. The shops tend to be clustered together, which makes it easy to compare prices and quality before you buy; in Nassau you’ll find them on Bay Street and in the International Bazaar, and in the Port Lucaya Market on Grand Bahama. Things to keep an eye out for include gold and silver jewelry and such gem stones as diamonds, sapphires, and emeralds set in gold from Christian Dior and other leading designers. Abaco Gold is a range of jewelry designed and sold only in the Bahamas and unusual pieces such as rare gold and silver coins brought from treasure found on the seabed, and mounted in gold to be worn as pendants or brooches. If it’s time for a new timepiece, you can choose from a comprehensive range of watches by names such as Rolex, Breitling, and Tag Hauer. Fragrances from around the world, fine crystal, and European leather goods are also on display in most of the shops.
+written_2/travel_guides/berlitz2/Bahamas-WhereToGo.txt:The straw market fronts onto Bay Street, one of the leading duty-free shopping capitals of the world. Only a few years ago this street was the domain of the Bay Street Boys, a small group of men who controlled all economic activity in the Bahamas; now Bay Street seduces visitors with huge sparkling gems, hundreds of ounces of gold, and the smell of a thousand designer fragrances. The façades of the pretty 18th-century shops hide modern air-conditioned shopping palaces piled high with luxury goods.
+```
+
 ## Option 1
 
-For option 1, I chose to use the -f option which lets grep match based on patterns that are contained in a file. I found this option on the manpage.
+These outputs are getting a little long, so for option 1, I chose to use the -o option which makes grep print only the parts of the file (or input) that match the pattern. I combine this with the -n option which prints the line number of a match, so I know what I'm looking for. What's notable is this can be used with wc to count the number of times a pattern occurs in a given input or file. I found this option on the manpage.
+
+### Example 1
+
+This shortens the output of our previous search about gold significantly:
+
+Command:
+```bash
+grep -r "gold" written_2/travel_guides/*/*Bahamas* -o -n
+```
+Output:
+```
+written_2/travel_guides/berlitz2/Bahamas-History.txt:6:gold
+written_2/travel_guides/berlitz2/Bahamas-History.txt:7:gold
+written_2/travel_guides/berlitz2/Bahamas-History.txt:7:gold
+written_2/travel_guides/berlitz2/Bahamas-WhatToDo.txt:14:gold
+written_2/travel_guides/berlitz2/Bahamas-WhatToDo.txt:14:gold
+written_2/travel_guides/berlitz2/Bahamas-WhatToDo.txt:14:gold
+written_2/travel_guides/berlitz2/Bahamas-WhatToDo.txt:14:gold
+written_2/travel_guides/berlitz2/Bahamas-WhereToGo.txt:12:gold
+```
+
+### Example 2
+
+Count occurences of word in written_2
+
+## Option 2
+
+For option 2, I chose to use the -f option which lets grep match based on patterns that are contained in a file. I found this option on the manpage.
 
 ### Example 1
 
@@ -24,27 +77,17 @@ Just a generic match
 
 Idk, something else generic
 
-## Option 2
-
-For option 2, I chose to use the -o option which makes grep print only the parts of the file (or input) that match the pattern. What's notable is this can be used with wc to count the number of times a pattern occurs in a given input or file. I found this option on the manpage.
-
-### Example 1
-
-Count occurences of Lucayans (or some other word)
-
-### Example 2
-
-Count occurences of word in written_2
-
 ## Option 3
 
-For option 1, I chose to use the -E option which has grep do matches using extended regular expressions. THis allows more flexibility with pattern matching. I found this option on the manpage.
+For option 1, I chose to use the -E option which has grep do matches using extended regular expressions. This allows more flexibility with pattern matching. I found this option on the manpage.
 
 ### Example 1
 
+Continuing the natural resources theme, maybe I want to 
+
 ### Example 2
 
-Count number of sentences in a file
+Count number of sentences in the repository
 
 
 

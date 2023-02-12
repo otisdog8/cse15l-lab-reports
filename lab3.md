@@ -39,7 +39,7 @@ Here we can see an unfortunate consequence of the -r option: it includes stuff i
 
 ## Part 2
 
-These outputs are getting a little long, so for part 2, I chose to use the -o option which makes grep print only the parts of the file (or input) that match the pattern. I combine this with the -n option which prints the line number of a match, so I know where to look in the file. What's notable is this can be used with wc to count the number of times a pattern occurs in a given input or file. I found this option on the manpage.
+The output for the first example got a little long, so for part 2, I chose to use the -o option which makes grep print only the parts of the file (or input) that match the pattern. I combine this with the -n option which prints the line number of a match, so I know where to look in the file. What's notable is this can be used with wc to count the number of times a pattern occurs in a given input or file. I found this option on the manpage.
 
 ### Example 1
 

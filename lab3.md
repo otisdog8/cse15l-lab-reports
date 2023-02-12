@@ -2,9 +2,9 @@
 
 I chose grep to research because it's the command that I've noticed has the most real-world use.
 
-## Option 0
+## Part 1
 
-For option 0, I chose to use the -r option (or -d recurse) which lets grep recursively search all the files in a directory tree for a matching pattern. I found this option on the manpage.
+For part 1, I chose to use the -r option (or -d recurse) which lets grep recursively search all the files in a directory tree for a matching pattern. I found this option on the manpage.
 
 ### Example 1
 
@@ -37,9 +37,9 @@ written_2/travel_guides/berlitz2/Bahamas-WhatToDo.txt:Duty-free luxury goods. Bo
 written_2/travel_guides/berlitz2/Bahamas-WhereToGo.txt:The straw market fronts onto Bay Street, one of the leading duty-free shopping capitals of the world. Only a few years ago this street was the domain of the Bay Street Boys, a small group of men who controlled all economic activity in the Bahamas; now Bay Street seduces visitors with huge sparkling gems, hundreds of ounces of gold, and the smell of a thousand designer fragrances. The façades of the pretty 18th-century shops hide modern air-conditioned shopping palaces piled high with luxury goods.
 ```
 
-## Option 1
+## Part 2
 
-These outputs are getting a little long, so for option 1, I chose to use the -o option which makes grep print only the parts of the file (or input) that match the pattern. I combine this with the -n option which prints the line number of a match, so I know what I'm looking for. What's notable is this can be used with wc to count the number of times a pattern occurs in a given input or file. I found this option on the manpage.
+These outputs are getting a little long, so for part 2, I chose to use the -o option which makes grep print only the parts of the file (or input) that match the pattern. I combine this with the -n option which prints the line number of a match, so I know where to look in the file. What's notable is this can be used with wc to count the number of times a pattern occurs in a given input or file. I found this option on the manpage.
 
 ### Example 1
 
@@ -74,13 +74,13 @@ Output:
 391
 ```
 
-## Option 2
+## Part 3
 
-For option 2, I chose to use the `--color=auto` option which makes the grep inputs more colorful. I like this because in my terminal (unlike vscode or git bash), grep is not colored by default. I found this option on the manpage. Do note that for all the examples for this option, I'm going to ignore the instructions and use photos as the output instead of code blocks, as the code blocks do not render color properly. 
+For part 3, I chose to use the `--color=auto` option which makes the grep inputs more colorful. I like this because in my terminal (unlike vscode or git bash), grep is not colored by default. I found this option on the manpage. Do note that for all the examples for this option, I'm going to ignore the instructions and use photos as the output instead of code blocks, as the code blocks do not render color properly. 
 
 ### Example 1
 
-Just repeating the lucayans match, but with color:
+Just repeating the lucayans match, but with color (this makes the matches easier to distinguish by adding contrast):
 
 Command:
 ```bash
@@ -103,11 +103,13 @@ Output (before and after):
 
 ![image](https://user-images.githubusercontent.com/37094599/218294823-1b047ae2-6066-4fe1-bbdd-e58277cbb21e.png)
 
+Apparently, it turns the line numbers green. Because all the different parts of the output are different colors, it does make it quite a bit easier to read. 
+
 In the future, I've added `alias grep=grep --color=auto` to my ~/.zshrc so it does this by default.
 
-## Option 3
+## Part 4
 
-For option 1, I chose to use the -E option which has grep do matches using extended regular expressions. This allows more flexibility with pattern matching. I found this option on the manpage.
+For part 4, I chose to use the -E option which has grep do matches using extended regular expressions. This allows more flexibility with pattern matching. I found this option on the manpage.
 
 ### Example 1
 
@@ -153,4 +155,4 @@ Output:
 49319
 ```
 
-So, it appears that there are 49319 sentences in the repository. 
+So, it appears that there are 49319 sentences in the repository. This is probably more of an upper bound, as I did notice some false positive matching, but it's a reasonable estimate. 

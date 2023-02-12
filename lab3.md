@@ -23,19 +23,19 @@ written_2/travel_guides/berlitz2/Bahamas-History.txt:The Spaniards never bothere
 
 ### Example 2
 
- (do note that i use shell globbing here):
+Maybe I want to count the number of lines which mention Bahamas, possibly to see how much the Bahamas are represented in all the data. 
 
 Command:
 ```bash
-grep -d recurse "gold" written_2/travel_guides/*/*Bahamas*
+grep -d recurse "Bahamas" | wc -l
 ```
 Output:
 ```
-written_2/travel_guides/berlitz2/Bahamas-History.txt:Centuries before the arrival of Columbus, a peaceful Amerindian people who called themselves the Luccucairi had settled in the Bahamas. Originally from South America, they had traveled up through the Caribbean islands, surviving by cultivating modest crops and from what they caught from sea and shore. Nothing in the experience of these gentle people could have prepared them for the arrival of the Pinta, the Niña, and the Santa Maria at San Salvador on 12 October 1492. Columbus believed that he had reached the East Indies and mistakenly called these people Indians. We know them today as the Lucayans. Columbus claimed the island and others in the Bahamas for his royal Spanish patrons, but not finding the gold and other riches he was seeking, he stayed for only two weeks before sailing towards Cuba.
-written_2/travel_guides/berlitz2/Bahamas-History.txt:The Spaniards never bothered to settle in the Bahamas, but the number of shipwrecks attest that their galleons frequently passed through the archipelago en route to and from the Caribbean, Florida, Bermuda, and their home ports. On Eleuthera the explorers dug a fresh-water well — at a spot now known as “Spanish Wells” — which was used to replenish the supplies of water on their ships before they began the long journey back to Europe with their cargoes of South American gold. As for the Lucayans, within 25 years all of them, perhaps some 30,000 people, were removed from the Bahamas to work — and die — in Spanish gold mines and on farms and pearl fisheries on Hispaniola (Haiti), Cuba, and elsewhere in the Caribbean.
-written_2/travel_guides/berlitz2/Bahamas-WhatToDo.txt:Duty-free luxury goods. Both New Providence and Grand Bahama have a good range of luxury duty-free goods for sale. The shops tend to be clustered together, which makes it easy to compare prices and quality before you buy; in Nassau you’ll find them on Bay Street and in the International Bazaar, and in the Port Lucaya Market on Grand Bahama. Things to keep an eye out for include gold and silver jewelry and such gem stones as diamonds, sapphires, and emeralds set in gold from Christian Dior and other leading designers. Abaco Gold is a range of jewelry designed and sold only in the Bahamas and unusual pieces such as rare gold and silver coins brought from treasure found on the seabed, and mounted in gold to be worn as pendants or brooches. If it’s time for a new timepiece, you can choose from a comprehensive range of watches by names such as Rolex, Breitling, and Tag Hauer. Fragrances from around the world, fine crystal, and European leather goods are also on display in most of the shops.
-written_2/travel_guides/berlitz2/Bahamas-WhereToGo.txt:The straw market fronts onto Bay Street, one of the leading duty-free shopping capitals of the world. Only a few years ago this street was the domain of the Bay Street Boys, a small group of men who controlled all economic activity in the Bahamas; now Bay Street seduces visitors with huge sparkling gems, hundreds of ounces of gold, and the smell of a thousand designer fragrances. The façades of the pretty 18th-century shops hide modern air-conditioned shopping palaces piled high with luxury goods.
+grep: .git/index: binary file matches
+86
 ```
+
+Here we can see an unfortunate consequence of the -r option: it includes stuff in .git. We can resolve this with the command line option `--exclude-dir=.git` (seen in part 4). 
 
 ## Part 2
 
@@ -97,7 +97,7 @@ I wonder what it does when you shorten the output, so let's run that:
 
 Command:
 ```bash
-grep -r "gold" written_2/travel_guides/*/*Bahamas* -o -n --color=auto
+grep "gold" written_2/travel_guides/*/*Bahamas* -o -n --color=auto
 ```
 Output (before and after):
 

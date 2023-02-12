@@ -23,7 +23,7 @@ written_2/travel_guides/berlitz2/Bahamas-History.txt:The Spaniards never bothere
 
 ### Example 2
 
-Maybe I want to travel around the Bahamas, and I'm interested in gold, so I want to find all the files in travel_guides folder which mention gold in association with the Bahamas (do note that i use shell globbing here):
+ (do note that i use shell globbing here):
 
 Command:
 ```bash
@@ -43,11 +43,11 @@ These outputs are getting a little long, so for part 2, I chose to use the -o op
 
 ### Example 1
 
-This shortens the output of our previous search about gold significantly:
+Maybe I want to travel around the Bahamas, and I'm interested in gold, so I want to find all the files in travel_guides folder which mention gold in association with the Bahamas. But, I know the output might be large, so I'll use the command line options to shorten it.
 
 Command:
 ```bash
-grep -r "gold" written_2/travel_guides/*/*Bahamas* -o -n
+grep "gold" written_2/travel_guides/*/*Bahamas* -o -n
 ```
 Output:
 ```
@@ -117,7 +117,7 @@ Although my search for Bahamas gold appears to have been going well, I've made a
 
 Command:
 ```bash
-grep -E -r "([gG]old|[sS]ilver)" written_2/travel_guides/*/*Bahamas* -o -n --color=auto
+grep -E "([gG]old|[sS]ilver)" written_2/travel_guides/*/*Bahamas* -o -n --color=auto
 ```
 Output:
 ```

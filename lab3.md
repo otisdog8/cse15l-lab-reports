@@ -27,7 +27,7 @@ Maybe I want to travel around the Bahamas, and I'm interested in gold, so I want
 
 Command:
 ```bash
-grep -r "gold" written_2/travel_guides/*/*Bahamas*
+grep -d recurse "gold" written_2/travel_guides/*/*Bahamas*
 ```
 Output:
 ```
@@ -76,15 +76,31 @@ Output:
 
 ## Option 2
 
-For option 2, I chose to use the -f option which lets grep match based on patterns that are contained in a file. I found this option on the manpage.
+For option 2, I chose to use the --color=auto option which makes the grep inputs more colorful. I like this because in my terminal (unlike vscode or git bash), grep is not colored by default. I found this option on the manpage. Do note that for all the examples for this option, I'm going to ignore the instructions and use photos as the output instead of code blocks, as the code blocks do not render color properly. 
 
 ### Example 1
 
-Just a generic match
+Just repeating the lucayans match, but with color:
+
+Command:
+```bash
+grep -r "Lucayans" --color=auto
+```
+Output (after and before):
+![image](https://user-images.githubusercontent.com/37094599/218294574-5fea4895-45cb-4004-aea0-87f8b44cfc8d.png)
 
 ### Example 2
 
-Idk, something else generic
+I wonder what it does when you shorten the output, so let's run that:
+
+Command:
+```bash
+grep -r "gold" written_2/travel_guides/*/*Bahamas* -o -n
+```
+Output (before and after):
+![image](https://user-images.githubusercontent.com/37094599/218294823-1b047ae2-6066-4fe1-bbdd-e58277cbb21e.png)
+
+In the future, I've added `alias grep=grep --color=auto` to my ~/.zshrc so it does this by default.
 
 ## Option 3
 

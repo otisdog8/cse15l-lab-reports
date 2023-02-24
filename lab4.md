@@ -26,7 +26,7 @@ Keyboard:
 
 `<ctrl>r,g8<enter>`
 
-My github username Otisdog8 ends with g8 so this was a good way to quickly seek to the github clone command in the search history (`git clone git@github.com:otisdog8/lab7.git`_
+My github username Otisdog8 ends with g8 so this was a good way to quickly seek to the github clone command in the search history (`git clone git@github.com:otisdog8/lab7.git`)
 
 ## Step 6
 ![image](https://user-images.githubusercontent.com/37094599/221055976-ab83f4eb-a549-45aa-99f6-9507a28a2e36.png)
@@ -36,7 +36,7 @@ Keyboard:
   
 `cd l<tab>,<ctrl>r,javac<enter>,<ctrl>r,java<space><enter>`
 
-I only use one javac command, so searching for javac in the search history returns the correct command: `javac -cp .:lib/hamcrest-core-1.3.jar:lib/junit-4.13.2.jar *.java`. I put a space after java so it doesn't match the previous javac command: `java -cp .:lib/hamcrest-core-1.3.jar:lib/junit-4.13.2.jar org.junit.runner.JUnitCore ListExamplesTests`.
+lab7 is the only folder that starts with l, so I can use tab to complete. I only use one javac command, so searching for javac in the search history returns the correct command: `javac -cp .:lib/hamcrest-core-1.3.jar:lib/junit-4.13.2.jar *.java`. I put a space after java so it doesn't match the previous javac command: `java -cp .:lib/hamcrest-core-1.3.jar:lib/junit-4.13.2.jar org.junit.runner.JUnitCore ListExamplesTests`.
 
 ## Step 7
 ![image](https://user-images.githubusercontent.com/37094599/221062774-82d7483b-790c-4053-a7f8-b6c673bde075.png)
@@ -45,7 +45,7 @@ Keyboard:
 
 `<ctrl>r,nv<enter>,/x1<enter>Nlr2:wq<enter>`
 
-I use nv to find the nvim command from my search history (`nvim ListExamples.java`). I use /x1 to search for the end of index1, N to go to the last search match, l to position my cursor correctly, r2 to replace the 1 with a 2, and :wq to exit neovim.
+I use nv to find the nvim command from my search history (`nvim ListExamples.java`). I use /x1 to search for the end of index1, N to go to the last search match, l to move the cursor one unit right, r2 to replace the 1 with a 2, and :wq to exit neovim.
 
 ## Step 8
 ![image](https://user-images.githubusercontent.com/37094599/221062966-4c616ad5-60f7-4f5a-9c5b-d73dca5878dd.png)

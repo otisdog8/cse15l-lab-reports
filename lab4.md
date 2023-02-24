@@ -64,4 +64,4 @@ Keyboard:
 
 `<ctrl>r,add<enter>,<ctrl>r,comm<enter>,<ctrl>r,push<enter>`
 
-I use add to find my git add command in the search history: `git add ListExamples.java`. I use my comm to match the commit command in the search history: ` git commit -m t`, and I use push to match `git push`. 
+I use add to find my git add command in the search history: `git add ListExamples.java`. I use my comm to match the commit command in the search history: `git commit -m t` , and I use push to match `git push` . 

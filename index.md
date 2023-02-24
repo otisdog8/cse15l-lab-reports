@@ -5,3 +5,5 @@ Hello, world!
 [lab2](https://15l.rooty.dev/lab2.html)
 
 [lab3](https://15l.rooty.dev/lab3.html)
+
+[lab4](https://15l.rooty.dev/lab4.html)
